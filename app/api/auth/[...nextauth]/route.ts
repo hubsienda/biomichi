@@ -1,1 +1,5 @@
-export { GET, POST } from "@/lib/auth";
+// app/api/auth/[...nextauth]/route.ts
+import NextAuth from "next-auth";
+import { authConfig } from "@/lib/auth";
+
+export const { GET, POST } = NextAuth(authConfig);
