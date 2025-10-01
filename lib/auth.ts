@@ -46,10 +46,6 @@ export const authConfig: NextAuthConfig = {
   session: { strategy: "jwt" }
 };
 
-// 👇 Expose handlers.GET/POST directly (v5-style)
-export const {
-  handlers: { GET, POST },
-  auth,
-  signIn,
-  signOut
-} = NextAuth(authConfig);
+// NOTE: don't export `handlers` here.
+// Export only these for use in middleware/server actions if you add them later.
+export const { auth, signIn, signOut } = NextAuth(authConfig);
