@@ -1,3 +1,4 @@
+// lib/auth.ts
 import NextAuth, { type NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 
@@ -29,14 +30,12 @@ export const authConfig: NextAuthConfig = {
   ],
   callbacks: {
     async signIn({ user }) {
-      if (!allowedEmails.size) return true; // no allow-list => allow any Google login
+      if (!allowedEmails.size) return true;
       const email = (user?.email || "").toLowerCase();
       return allowedEmails.has(email);
     },
     async jwt({ token, account }) {
-      if (account) {
-        token.access_token = account.access_token;
-      }
+      if (account) token.access_token = account.access_token;
       return token;
     },
     async session({ session, token }) {
@@ -47,4 +46,10 @@ export const authConfig: NextAuthConfig = {
   session: { strategy: "jwt" }
 };
 
-export const { handlers, auth, signIn, signOut } = NextAuth(authConfig);
+// 👇 Expose handlers.GET/POST directly (v5-style)
+export const {
+  handlers: { GET, POST },
+  auth,
+  signIn,
+  signOut
+} = NextAuth(authConfig);
