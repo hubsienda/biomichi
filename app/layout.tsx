@@ -1,23 +1,29 @@
+// app/layout.tsx
 import "./globals.css";
 import { ReactNode } from "react";
 
 export const metadata = {
-  title: "Biomichi Intranet",
-  description: "A clean Drive-powered intranet"
+  title: "Biomichi — Drive Intranet",
+  description: "A refined interface on top of Google Drive"
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gray-50 text-gray-900">
-        <div className="max-w-6xl mx-auto p-6">
-          <header className="mb-6">
-            <h1 className="text-2xl font-semibold">Biomichi</h1>
-            <p className="text-sm text-gray-600">Drive-powered workspace</p>
+      <body>
+        <div className="container">
+          <header className="header">
+            <div className="brand">
+              <div className="logo" />
+              <div>
+                <div className="title">Biomichi</div>
+                <div className="sub">Elegant workspace for your Google Drive</div>
+              </div>
+            </div>
           </header>
           {children}
-          <footer className="mt-10 text-xs text-gray-500">
-            Built with Next.js · Google Sign‑in required
+          <footer className="footer">
+            Tip: Press <span className="kbd">Enter</span> to search · Sign in with Google required
           </footer>
         </div>
       </body>
