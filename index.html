@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Biomichi — Drive</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Identity Services + gapi -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="config.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand"><div class="logo"></div><div><div class="title">Biomichi</div><div class="sub">Elegant interface for your Google Drive</div></div></div>
+      <div id="signin"></div>
+    </header>
+
+    <section class="card">
+      <div class="toolbar">
+        <input id="q" class="input" placeholder="Search (full text)" />
+        <select id="type" class="select">
+          <option value="">All types</option>
+          <option value="application/vnd.google-apps.document">Docs</option>
+          <option value="application/vnd.google-apps.spreadsheet">Sheets</option>
+          <option value="application/vnd.google-apps.presentation">Slides</option>
+          <option value="application/pdf">PDF</option>
+        </select>
+        <button id="searchBtn" class="btn primary">Search</button>
+        <button id="indexBtn" class="btn">Build index</button>
+        <span id="indexBadge" class="badge" style="display:none">Indexed</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3 class="h">Results</h3>
+      <div id="results" class="grid"></div>
+      <p id="empty" class="muted" style="display:none">No files found.</p>
+    </section>
+
+    <section class="card">
+      <h3 class="h">Recent activity (raw)</h3>
+      <pre id="activity" class="pre muted">—</pre>
+    </section>
+
+    <footer class="footer">Tip: Press Enter to search · Sign in with Google first</footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
